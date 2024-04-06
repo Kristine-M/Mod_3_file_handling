@@ -26,11 +26,13 @@ def extract_emails(filename):
     
     with open(filename, 'r') as file:
         
-        email = re.findall(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', file)
-        
-        unique_email.add(email)
-        
-    
+        for email in file:
+            
+            line_email = re.findall(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", email)
+            
+            
+            unique_email.update(line_email)
+              
     for new_email in unique_email:
         print(new_email)
 

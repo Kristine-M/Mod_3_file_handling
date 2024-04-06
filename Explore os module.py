@@ -94,14 +94,16 @@ def count_file_extensions(directory):
             
             extension = os.path.splitext(file)
             
-            extension = extension.lower()
+            for extns in extension:
             
-            if extension[1] in extension_list:
+                extns = extns.lower()
+            
+                if extns[1] in extension_list:
+                    
+                    extension_list[extns[1]] = extension_list[extns[1]] + 1
                 
-                extension_list[extension[1]] = extension_list[extension[1]] + 1
-            
-            else:
-                extension_list[extension[1]] = 0
+                else:
+                    extension_list[extns[1]] = 0
                 
     except FileNotFoundError:
         

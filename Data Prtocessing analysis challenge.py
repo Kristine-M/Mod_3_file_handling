@@ -20,23 +20,25 @@ def analyze_blog_sentiments(blog_file):
 
     # Open the blog file and read its contents
     with open(blog_file, 'r') as file:
+        print("hi")
         
         for review in file:
-               
-            for word in pos_words:
-                if word in review:
+            print(review)
+            # print(wrd)
+            for wrd in pos_words:
+                if wrd in review.lower():
                     pos_count += 1
 
-            for word in neg_words:
-                if word in review:
+            for wrd in neg_words:
+                if wrd in review.lower():
                     neg_count += 1
                     
-    return pos_count, neg_count
+    print("There was ", pos_count, " positive words and ", neg_count, " negative words")
 
 blog_name = input("Please input a blog name: ")
-pos, neg = analyze_blog_sentiments(blog_name)
+analyze_blog_sentiments(blog_name)
 
-print("There was ", pos, " positive words and ", neg, " negative words")
+
 
 
 # task 2
@@ -63,14 +65,18 @@ def compile_weather_data(file_list):
         for line in file:
             year, temperature = line.strip().split(',')
 
-            temperature = int(temperature[:-2])
+            temperature = int(temperature[:-3])
+            
+            print(temperature)
             year = year[:4]
             sum += temperature
             
             temp_list.append(temperature)
             
-    print("The year ", year, "had a average temperature of ", sum/len(temp_list), " and the max temp being ", max(temp_list) )
+    avg = sum/len(temp_list)
+            
+    print("The year ", year, "had a average temperature of ", avg, " and the max temp being ", max(temp_list) )
     
 
-file_list = input("Enter file name: ")
-compile_weather_data(file_list)
+# file_list = input("Enter file name: ")
+# compile_weather_data(file_list)
